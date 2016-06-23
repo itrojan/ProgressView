@@ -1,9 +1,11 @@
 package com.aihook.progressview.library;
 
-import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Point;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -79,8 +81,15 @@ public class ProgressViewDialog {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
         WindowManager.LayoutParams lp = mAlertDialog.getWindow().getAttributes();
-        lp.width = (int)(display.getWidth()); //设置宽度
-        lp.height = (int) display.getHeight();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2){
+            Point size = new Point();
+            display.getSize(size);
+            lp.width = size.x; //设置宽度
+            lp.height = size.y;
+        } else {
+            lp.width = display.getWidth(); //设置宽度
+            lp.height = display.getHeight();
+        }
         mAlertDialog.getWindow().setAttributes(lp);
         mAlertDialog.setContentView(rootView);
         if(mSharedView.getParent()!=null)((ViewGroup)mSharedView.getParent()).removeView(mSharedView);
