@@ -1,11 +1,13 @@
 package com.aihook.progressview.library;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -78,6 +80,8 @@ public class ProgressViewDialog {
      */
     private void onAttached() {
         mAlertDialog.show();
+        Resources resources = context.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
         WindowManager.LayoutParams lp = mAlertDialog.getWindow().getAttributes();
@@ -87,8 +91,8 @@ public class ProgressViewDialog {
             lp.width = size.x; //设置宽度
             lp.height = size.y;
         } else {
-            lp.width = display.getWidth(); //设置宽度
-            lp.height = display.getHeight();
+            lp.width = dm.widthPixels; //设置宽度
+            lp.height = dm.heightPixels;
         }
         mAlertDialog.getWindow().setAttributes(lp);
         mAlertDialog.setContentView(rootView);

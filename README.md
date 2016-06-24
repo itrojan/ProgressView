@@ -10,6 +10,6 @@ A ProgressView.
 
 ```groovy
 dependencies {
-    compile 'com.aihook:progressview:1.0.0'
+    compile 'com.aihook:progressview:1.0.1'
 }
 ```
