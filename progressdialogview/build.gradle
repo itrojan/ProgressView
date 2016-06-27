@@ -8,7 +8,7 @@ android {
         minSdkVersion 8
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -26,18 +26,18 @@ dependencies {
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'progressview'
+    bintrayName = 'progressdialogview'
 
     publishedGroupId = 'com.aihook'
-    libraryName = 'progressview'
-    artifact = 'progressview'
+    libraryName = 'progressdialogview'
+    artifact = 'progressdialogview'
 
     libraryDescription = 'Android Custom ProgressView'
 
     siteUrl = 'https://github.com/itrojan/ProgressView'
     gitUrl = 'https://github.com/itrojan/ProgressView.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.0'
 
     developerId = 'itrojan'
     developerName = 'itrojan'
